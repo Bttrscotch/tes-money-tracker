@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Finance Tracker</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Finance Tracker</h1>
+        <p>Kelola uang saku sekolahmu dengan mudah!</p>
+
+        <div class="saldo">
+            <h3>Total Saldo</h3>
+            <h2>Rp{{ "{:,.0f}".format(saldo) }}</h2>
+        </div>
+
+        <div class="ringkasan">
+
+            <div class="pemasukan">
+                <h3>Pemasukan</h3>
+                <p>Rp{{ "{:,.0f}".format(pemasukan) }}</p>
+            </div>
+
+            <div class="pengeluaran">
+                <h3>Pengeluaran</h3>
+                <p>Rp{{ "{:,.0f}".format(pengeluaran) }}</p>
+            </div>
+
+        </div>
+
+        <h2>Tambah Transaksi</h2>
+
+        <form method="POST">
+
+            <input
+                type="text"
+                name="nama"
+                placeholder="Nama transaksi"
+                required
+            >
+
+            <input
+                type="number"
+                name="jumlah"
+                placeholder="Jumlah uang"
+                min="1"
+                required
+            >
+
+            <select name="jenis" required>
+                <option value="masuk">Pemasukan</option>
+                <option value="keluar">Pengeluaran</option>
+            </select>
+
+            <button type="submit">Simpan Transaksi</button>
+
+        </form>
+
+        <h2>Riwayat Transaksi</h2>
+
+        <table>
+
+            <tr>
+                <th>Nama</th>
+                <th>Jenis</th>
+                <th>Jumlah</th>
+            </tr>
+
+            {% for item in transaksi %}
+
+            <tr>
+                <td>{{ item.nama }}</td>
+                <td>{{ item.jenis }}</td>
+                <td>Rp{{ "{:,.0f}".format(item.jumlah) }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</body>
+</html>
