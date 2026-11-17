@@ -1,65 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Student Finance Tracker</title>
+    <title>Student Finance</title>
 
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="container">
 
-        <h1>Student Finance Tracker</h1>
-        <p>Kelola uang saku sekolahmu dengan mudah!</p>
+        <h1>Student Finance</h1>
+        <p>Kelola uang sakumu dengan bijak!</p>
 
         <div class="saldo">
             <h3>Total Saldo</h3>
-            <h2>Rp{{ "{:,.0f}".format(saldo) }}</h2>
+            <h2>Rp150.000</h2>
         </div>
 
         <div class="ringkasan">
 
             <div class="pemasukan">
                 <h3>Pemasukan</h3>
-                <p>Rp{{ "{:,.0f}".format(pemasukan) }}</p>
+                <h2>Rp200.000</h2>
             </div>
 
             <div class="pengeluaran">
                 <h3>Pengeluaran</h3>
-                <p>Rp{{ "{:,.0f}".format(pengeluaran) }}</p>
+                <h2>Rp50.000</h2>
             </div>
 
         </div>
 
         <h2>Tambah Transaksi</h2>
 
-        <form method="POST">
+        <form>
 
             <input
                 type="text"
-                name="nama"
-                placeholder="Nama transaksi"
-                required
-            >
+                placeholder="Nama transaksi">
 
             <input
                 type="number"
-                name="jumlah"
-                placeholder="Jumlah uang"
-                min="1"
-                required
-            >
+                placeholder="Jumlah uang">
 
-            <select name="jenis" required>
-                <option value="masuk">Pemasukan</option>
-                <option value="keluar">Pengeluaran</option>
+            <select>
+                <option>Pemasukan</option>
+                <option>Pengeluaran</option>
             </select>
 
-            <button type="submit">Simpan Transaksi</button>
+            <button type="button">Simpan Transaksi</button>
 
         </form>
 
@@ -68,20 +62,34 @@
         <table>
 
             <tr>
-                <th>Nama</th>
+                <th>Keterangan</th>
                 <th>Jenis</th>
                 <th>Jumlah</th>
             </tr>
 
-            {% for item in transaksi %}
-
             <tr>
-                <td>{{ item.nama }}</td>
-                <td>{{ item.jenis }}</td>
-                <td>Rp{{ "{:,.0f}".format(item.jumlah) }}</td>
+                <td>Uang saku</td>
+                <td>Pemasukan</td>
+                <td>Rp100.000</td>
             </tr>
 
-            {% endfor %}
+            <tr>
+                <td>Beli makanan</td>
+                <td>Pengeluaran</td>
+                <td>Rp20.000</td>
+            </tr>
+
+            <tr>
+                <td>Uang tambahan</td>
+                <td>Pemasukan</td>
+                <td>Rp100.000</td>
+            </tr>
+
+            <tr>
+                <td>Beli alat tulis</td>
+                <td>Pengeluaran</td>
+                <td>Rp30.000</td>
+            </tr>
 
         </table>
 
